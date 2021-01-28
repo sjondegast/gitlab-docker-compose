@@ -1,0 +1,28 @@
+version: '3.9'
+services:
+  gitlab:
+    image: 'gitlab/gitlab-ee:latest'
+    restart: unless-stopped
+    hostname: 'gitlab'
+    container_name: gitlab
+    environment:
+      GITLAB_OMNIBUS_CONFIG: "from_file('/omnibus_config.rb')"
+    configs:
+      - source: gitlab
+        target: /omnibus_config.rb
+    secrets:
+      - - gitlab_root_password
+    ports:
+      - '80:80'
+      - '443:443'
+      - '22:22'
+    volumes:
+      - '/discovery/apps/gitlab/app/config:/etc/gitlab'
+      - '/discovery/apps/gitlab/app/logs:/var/log/gitlab'
+      - '/discovery/apps/gitlab/app/data:/var/opt/gitlab'
+configs:
+  gitlab:
+    file: ./gitlab.rb
+secrets:
+  gitlab_root_password:
+    file: ./root_password.txt
