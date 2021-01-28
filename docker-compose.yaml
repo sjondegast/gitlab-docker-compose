@@ -15,9 +15,9 @@ services:
       - '443:443'
       - '22:22'
     volumes:
-      - '/discovery/apps/gitlab/app/config:/etc/gitlab'
-      - '/discovery/apps/gitlab/app/logs:/var/log/gitlab'
-      - '/discovery/apps/gitlab/app/data:/var/opt/gitlab'
+      - '${GITLAB_HOME}/config:/etc/gitlab'
+      - '${GITLAB_HOME}/logs:/var/log/gitlab'
+      - '${GITLAB_HOME}/data:/var/opt/gitlab'
 configs:
   gitlab:
     file: ./gitlab.rb
