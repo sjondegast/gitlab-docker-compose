@@ -10,8 +10,6 @@ services:
     configs:
       - source: gitlab
         target: /omnibus_config.rb
-    secrets:
-      - - gitlab_root_password
     ports:
       - '80:80'
       - '443:443'
@@ -23,6 +21,3 @@ services:
 configs:
   gitlab:
     file: ./gitlab.rb
-secrets:
-  gitlab_root_password:
-    file: ./root_password.txt
