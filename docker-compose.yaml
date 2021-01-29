@@ -14,9 +14,8 @@ services:
         nginx['redirect_http_to_https'] = true
         grafana['enable'] = false
         prometheus_monitoring['enable'] = false
-        GITLAB_SIGNUP_ENABLED = false
-        GITLAB_DEFAULT_THEME = 4
-        GITLAB_TIMEZONE = Amsterdam
+        gitlab_rails['gitlab_default_theme'] = 4
+        gitlab_rails['time_zone'] = 'Europe/Amsterdam'
     ports:
       - '80:80'
       - '443:443'
