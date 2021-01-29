@@ -14,9 +14,6 @@ services:
         nginx['redirect_http_to_https'] = true
         grafana['enable'] = false
         prometheus_monitoring['enable'] = false
-        GITLAB_ROOT_PASSWORD=/run/secrets/gitlab_root_password
-    secrets:
-      - gitlab_root_password
     ports:
       - '80:80'
       - '443:443'
@@ -25,6 +22,3 @@ services:
       - '${GITLAB_HOME}/config:/etc/gitlab'
       - '${GITLAB_HOME}/logs:/var/log/gitlab'
       - '${GITLAB_HOME}/data:/var/opt/gitlab'
-secrets:
-  gitlab_root_password:
-    file: ./gitlab_root_password.txt # put admin password to this file
