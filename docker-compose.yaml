@@ -6,11 +6,17 @@ services:
     hostname: 'gitlab'
     container_name: gitlab
     environment:
+      # use relative url mapping ip/gitlab
       GITLAB_OMNIBUS_CONFIG: |
-        external_url 'http://gitlab.192.168.2.100'
+        external_url 'http://192.168.2.100/gitlab'
         gitlab_rails['gitlab_shell_ssh_port'] = 22
         letsencrypt['enabled'] = false
         nginx['redirect_http_to_https'] = true
+        grafana['enable'] = false
+        prometheus_monitoring['enable'] = false
+        GITLAB_ROOT_PASSWORD=/run/secrets/gitlab_root_password
+    secrets:
+      - gitlab_root_password
     ports:
       - '80:80'
       - '443:443'
@@ -19,3 +25,6 @@ services:
       - '${GITLAB_HOME}/config:/etc/gitlab'
       - '${GITLAB_HOME}/logs:/var/log/gitlab'
       - '${GITLAB_HOME}/data:/var/opt/gitlab'
+secrets:
+  gitlab_root_password:
+    file: ./gitlab_root_password.txt # put admin password to this file
