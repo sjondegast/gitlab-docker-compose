@@ -6,6 +6,7 @@ services:
     hostname: 'gitlab'
     container_name: gitlab
     environment:
+<<<<<<< HEAD
       # GITLAB_OMNIBUS_CONFIG: "from_file('/omnibus_config.rb')"
       GITLAB_OMNIBUS_CONFIG: |
         external_url 'http://192.168.2.100'
@@ -15,6 +16,9 @@ services:
     configs:
       - source: gitlab
         target: /omnibus_config.rb
+=======
+      GITLAB_OMNIBUS_CONFIG: "from_file('/omnibus_config.rb')"
+>>>>>>> 8f41c7af7213f7b221c5327d625c319e9f650515
     ports:
       - '80:80'
       - '443:443'
@@ -23,6 +27,3 @@ services:
       - '${GITLAB_HOME}/config:/etc/gitlab'
       - '${GITLAB_HOME}/logs:/var/log/gitlab'
       - '${GITLAB_HOME}/data:/var/opt/gitlab'
-configs:
-  gitlab:
-    file: ./gitlab.rb
