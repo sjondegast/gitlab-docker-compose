@@ -14,6 +14,7 @@ services:
         nginx['redirect_http_to_https'] = true
         grafana['enable'] = false
         prometheus_monitoring['enable'] = false
+        GITLAB_SIGNUP_ENABLED=false
     ports:
       - '80:80'
       - '443:443'
