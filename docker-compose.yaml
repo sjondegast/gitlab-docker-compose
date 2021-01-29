@@ -10,7 +10,6 @@ services:
       GITLAB_OMNIBUS_CONFIG: |
         external_url 'http://192.168.2.100/gitlab'
         gitlab_rails['gitlab_shell_ssh_port'] = 22
-        gitlab_rails['time_zone'] = 'CET'
         gitlab_rails['gitlab_default_theme'] = 4
         nginx['redirect_http_to_https'] = true
         letsencrypt['enabled'] = false
@@ -25,3 +24,5 @@ services:
       - '${GITLAB_HOME}/logs:/var/log/gitlab'
       - '${GITLAB_HOME}/data:/var/opt/gitlab'
       - '${GITLAB_HOME}/backups:/var/opt/gitlab/backups'
+      - '/etc/localtime:/etc/localtime:ro'
+      - '/etc/timezone:/etc/timezone:ro'
