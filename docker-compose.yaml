@@ -25,4 +25,3 @@ services:
       - '${GITLAB_HOME}/data:/var/opt/gitlab'
       - '${GITLAB_HOME}/backups:/var/opt/gitlab/backups'
       - '/etc/localtime:/etc/localtime:ro'
-      - '/etc/timezone:/etc/timezone:ro'
