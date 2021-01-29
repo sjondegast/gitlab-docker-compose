@@ -22,3 +22,4 @@ services:
       - '${GITLAB_HOME}/config:/etc/gitlab'
       - '${GITLAB_HOME}/logs:/var/log/gitlab'
       - '${GITLAB_HOME}/data:/var/opt/gitlab'
+      - '${GITLAB_HOME}/backups:/var/opt/gitlab/backups'
