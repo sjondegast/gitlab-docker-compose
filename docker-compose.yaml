@@ -7,6 +7,7 @@ services:
     container_name: gitlab
     environment:
       # use relative url mapping ip/gitlab
+      - GITLAB_SIGNUP_ENABLED=false
       GITLAB_OMNIBUS_CONFIG: |
         external_url 'http://192.168.2.100/gitlab'
         gitlab_rails['gitlab_shell_ssh_port'] = 22
@@ -14,7 +15,6 @@ services:
         nginx['redirect_http_to_https'] = true
         grafana['enable'] = false
         prometheus_monitoring['enable'] = false
-        GITLAB_SIGNUP_ENABLED=false
     ports:
       - '80:80'
       - '443:443'
